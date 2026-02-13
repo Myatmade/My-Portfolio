@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.wave-emoji {
+  display: inline-block;
+  transform-origin: 70% 70%;
+  animation: wave 1.6s infinite;
+}
+
+html {
+  background: url("/bg.jpeg") center / cover no-repeat fixed;
+}
+
+body {
+  background: transparent;
+}
+
+:root {
+  --bg: #f6f6f6;
+  --panel: #f2e9e4;
+  --nav: #22223b;
+  --muted: #4a4e69;
+
+  --text: #111111;
+  --text-muted: #2b2b2b;
+
+  --border: rgba(17, 17, 17, 0.12);
+  --shadow: 0 12px 30px rgba(17, 17, 17, 0.08);
+}
+
+html {
+  background: url("/bg.jpeg") center / cover no-repeat fixed;
+  color: var(--text);
+  scrollbar-gutter: stable;
+  overflow-y: hidden;
+}
+
+body {
+  background: transparent;
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+}
+
+.fade-in-section {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.fade-in-section.visible {
+  animation-play-state: paused;
+  opacity: 1;
+}
+
+section {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+section.visible {
+  opacity: 1;
+}
