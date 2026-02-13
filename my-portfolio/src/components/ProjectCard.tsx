@@ -12,7 +12,9 @@ export default function ProjectCard({ project }: { project: Project }) {
   const projectData = t.projectData[project.slug];
 
   const handleCardClick = () => {
-    navigate(`/projects/${project.slug}`);
+    navigate(`/projects/${project.slug}`, {
+      state: { fromProjects: true },
+    });
   };
 
   return (
@@ -50,7 +52,11 @@ export default function ProjectCard({ project }: { project: Project }) {
         </div>
 
         <div className="mt-3 flex flex-wrap gap-2">
-          <Button href={`/projects/${project.slug}`} variant="solid">
+          <Button
+            href={`/projects/${project.slug}`}
+            variant="solid"
+            state={{ fromProjects: true }}
+          >
             {t.projectCard.viewDetails}
           </Button>
 

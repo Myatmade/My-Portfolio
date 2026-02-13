@@ -4,11 +4,13 @@ import React from "react";
 type Variant = "solid" | "outline" | "ghost";
 
 type Props = {
-  href: string;
+  href?: string;
   children: React.ReactNode;
   variant?: Variant;
   external?: boolean;
   className?: string;
+  state?: unknown;
+  onClick?: () => void;
 };
 
 export default function Button({
@@ -17,9 +19,11 @@ export default function Button({
   variant = "outline",
   external,
   className = "",
+  state,
+  onClick,
 }: Props) {
   const base =
-    "inline-flex items-center justify-center rounded-xl px-3 py-1.5 text-sm transition " +
+    "inline-flex items-center justify-center rounded-xl px-3 py-1.5 text-sm transition cursor-pointer " +
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(34,34,59,0.45)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg)]";
 
   const styles: Record<Variant, string> = {
@@ -32,6 +36,18 @@ export default function Button({
 
   const cls = `${base} ${styles[variant]} ${className}`;
 
+  if (onClick) {
+    return (
+      <button className={cls} onClick={onClick}>
+        {children}
+      </button>
+    );
+  }
+
+  if (!href) {
+    throw new Error("Button requires either href or onClick prop");
+  }
+
   if (external) {
     return (
       <a className={cls} href={href} target="_blank" rel="noreferrer">
@@ -41,7 +57,7 @@ export default function Button({
   }
 
   return (
-    <Link className={cls} to={href}>
+    <Link className={cls} to={href} state={state}>
       {children}
     </Link>
   );

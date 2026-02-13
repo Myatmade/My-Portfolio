@@ -1,31 +1,16 @@
 import ProjectCard from "../components/ProjectCard";
 import { projects } from "../data/projects";
 import { useInView } from "../hooks/useInView";
-import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 import { translations } from "../i18n/translations";
 
 export default function Projects() {
   const section = useInView();
-  const navigate = useNavigate();
   const { language } = useLanguage();
   const t = translations[language];
 
   return (
     <div className="relative min-h-screen">
-      {/* Up indicator */}
-      <button
-        onClick={() => navigate("/about")}
-        className="absolute top-1/14 left-1/2 -translate-x-1/2 animate-bounce z-10 cursor-pointer hover:opacity-100 transition-opacity"
-        aria-label="Scroll to previous section"
-      >
-        <img
-          src="/down.svg"
-          alt="Scroll up"
-          className="w-5 h-5 opacity-60 rotate-180"
-        />
-      </button>
-
       <div
         ref={section.ref}
         className={`flex flex-col items-center justify-center min-h-screen space-y-6 transition-all duration-1000 ${
@@ -49,15 +34,6 @@ export default function Projects() {
           ))}
         </div>
       </div>
-
-      {/* Down indicator */}
-      <button
-        onClick={() => navigate("/skills")}
-        className="absolute bottom-1/14 left-1/2 -translate-x-1/2 animate-bounce z-10 cursor-pointer hover:opacity-100 transition-opacity"
-        aria-label="Scroll to next section"
-      >
-        <img src="/down.svg" alt="Scroll down" className="w-5 h-5 opacity-60" />
-      </button>
     </div>
   );
 }
