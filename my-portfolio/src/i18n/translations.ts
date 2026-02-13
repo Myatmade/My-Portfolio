@@ -187,7 +187,7 @@ export const translations = {
     contact: {
       title: "お問い合わせ",
       workIn: "対応言語:",
-      languages: ["ビルマ語", "英語", "日本語"],
+      languages: ["ミャンマー語", "英語", "日本語"],
     },
     projectDetail: {
       back: "戻る",
