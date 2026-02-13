@@ -10,7 +10,7 @@ export default function AppShell() {
       <Sidebar />
 
       <main className="min-h-screen relative z-10">
-        <div className="p-5 md:p-10 pt-20">
+        <div className="p-4 md:p-8 pt-16">
           <Outlet />
         </div>
       </main>

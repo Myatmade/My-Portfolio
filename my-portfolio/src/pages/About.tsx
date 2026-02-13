@@ -22,35 +22,35 @@ export default function About() {
         <img
           src="/down.svg"
           alt="Scroll up"
-          className="w-6 h-6 opacity-60 rotate-180"
+          className="w-5 h-5 opacity-60 rotate-180"
         />
       </button>
 
       <section
         ref={bioSection.ref}
-        className={`flex items-center justify-center min-h-screen px-8 transition-all duration-1000 ${
+        className={`flex items-center justify-center min-h-screen px-6 transition-all duration-1000 ${
           bioSection.isVisible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-4"
         }`}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-30 w-full max-w-7xl">
+        <div className="grid grid-cols-1 md:grid-cols-[0.8fr_0.9fr] gap-12 w-full max-w-7xl">
           {/* Left side: Bio content */}
           <div className="flex flex-col justify-center space-y-5">
-            <h1 className="text-5xl md:text-6xl font-semibold tracking-tight">
+            <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
               {t.about.title}
             </h1>
-            <p className="text-2xl text-[var(--text-muted)]">
+            <p className="text-lg text-[var(--text-muted)]">
               {t.about.subtitle}
             </p>
 
-            <p className="text-xl text-justify md:text-2xl leading-7 text-[var(--text-muted)]">
+            <p className="text-md text-justify md:text-lg leading-6 text-[var(--text-muted)]">
               {t.about.bio}
             </p>
 
             <div className="space-y-5">
               <div>
-                <p className="text-2xl font-semibold text-[var(--text)] mb-2">
+                <p className="text-lg font-semibold text-[var(--text)] mb-2">
                   {t.about.stackTitle}
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -60,7 +60,7 @@ export default function About() {
                 </div>
               </div>
               <div>
-                <p className="text-2xl font-semibold text-[var(--text)] mb-2">
+                <p className="text-lg font-semibold text-[var(--text)] mb-2">
                   {t.about.focusTitle}
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -83,8 +83,8 @@ export default function About() {
 
           {/* Right side: Profile photo */}
           <div className="flex items-center justify-center">
-            <div className="rounded-3xl border border-[var(--border)] bg-[rgba(246,246,246,0.55)] p-4 shadow-sm w-full h-full">
-              <div className="rounded-2xl bg-gray-200 overflow-hidden w-full h-full min-h-[500px]">
+            <div className="rounded-2xl border border-[var(--border)] bg-[rgba(246,246,246,0.55)] p-3 shadow-sm w-full h-full max-w-sm">
+              <div className="rounded-xl bg-gray-200 overflow-hidden w-full h-full min-h-[280px]">
                 <img
                   src="/Profile.jpg"
                   alt="Profile"
@@ -102,7 +102,7 @@ export default function About() {
         className="absolute bottom-1/14 left-1/2 -translate-x-1/2 animate-bounce z-10 cursor-pointer hover:opacity-100 transition-opacity"
         aria-label="Scroll to next section"
       >
-        <img src="/down.svg" alt="Scroll down" className="w-6 h-6 opacity-60" />
+        <img src="/down.svg" alt="Scroll down" className="w-5 h-5 opacity-60" />
       </button>
     </div>
   );

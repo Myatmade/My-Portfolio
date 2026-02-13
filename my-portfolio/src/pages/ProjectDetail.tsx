@@ -94,24 +94,24 @@ export default function ProjectDetail() {
         <img
           src="/down.svg"
           alt="Scroll up"
-          className="w-6 h-6 opacity-60 rotate-180"
+          className="w-5 h-5 opacity-60 rotate-180"
         />
       </button>
 
       <div
         key={project.slug}
-        className={`grid grid-cols-1 md:grid-cols-[1.3fr_1fr] items-start gap-6 w-full max-w-none px-6 md:px-10 py-6 transition-all duration-1000 ${
+        className={`grid grid-cols-1 md:grid-cols-[1.2fr_1fr] items-start gap-20 w-full max-w-none px-4 md:px-5 py-3 transition-all duration-1000 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}
       >
         {/* Left side: header and hero */}
-        <div className="flex flex-col space-y-4 h-full">
+        <div className="flex flex-col space-y-3 h-full">
           {/* header */}
-          <section className="space-y-2">
-            <h1 className="text-3xl md:text-4xl font-semibold">
+          <section className="space-y-1">
+            <h1 className="text-lg md:text-xl font-semibold">
               {projectData.title}
             </h1>
-            <p className="text-2xl text-[var(--text-muted)]">
+            <p className="text-md text-[var(--text-muted)]">
               {projectData.shortSummary}
             </p>
 
@@ -121,7 +121,7 @@ export default function ProjectDetail() {
               </Button>
               {project.githubUrl ? (
                 <Button href={project.githubUrl} external>
-                  <img src="/github.svg" alt="GitHub" className="w-8 h-8" />
+                  <img src="/github.svg" alt="GitHub" className="w-7 h-7" />
                 </Button>
               ) : null}
               {project.demoUrl ? (
@@ -133,10 +133,10 @@ export default function ProjectDetail() {
           </section>
 
           {/* hero / media */}
-          <section className="rounded-2xl border border-[var(--border)] overflow-hidden bg-[rgba(34,34,59,0.06)] shadow-sm">
+          <section className="rounded-2xl border border-[var(--border)] overflow-hidden bg-[rgba(34,34,59,0.06)] shadow-sm max-w-full">
             {mediaItems.length ? (
               <div className="flex flex-col h-full">
-                <div className="relative w-full aspect-video max-h-[480px] bg-black">
+                <div className="relative w-full aspect-video max-h-[260px] bg-black">
                   {mediaItems[mediaIndex]?.type === "video" ? (
                     <video
                       src={mediaItems[mediaIndex].src}
@@ -148,7 +148,7 @@ export default function ProjectDetail() {
                       playsInline
                     />
                   ) : (
-                    <div className="h-full w-full flex items-center justify-center bg-[rgba(246,246,246,0.35)] p-4">
+                    <div className="h-full w-full flex items-center justify-center bg-[rgba(246,246,246,0.35)] p-2">
                       <img
                         src={mediaItems[mediaIndex].src}
                         alt={`${projectData.title} media ${mediaIndex + 1}`}
@@ -162,7 +162,7 @@ export default function ProjectDetail() {
                   )}
 
                   {mediaItems.length > 1 ? (
-                    <div className="absolute inset-x-0 bottom-3 flex items-center justify-between px-3">
+                    <div className="absolute inset-x-0 bottom-2 flex items-center justify-between px-2">
                       <button
                         onClick={() =>
                           setMediaIndex(
@@ -171,7 +171,7 @@ export default function ProjectDetail() {
                               mediaItems.length,
                           )
                         }
-                        className="rounded-full bg-black/50 text-white px-3 py-1 text-md hover:bg-black/70"
+                        className="rounded-full bg-black/50 text-white px-3 py-1 text-sm hover:bg-black/70"
                         aria-label="Previous media"
                       >
                         {t.projectDetail.prev}
@@ -182,7 +182,7 @@ export default function ProjectDetail() {
                             (prev) => (prev + 1) % mediaItems.length,
                           )
                         }
-                        className="rounded-full bg-black/50 text-white px-3 py-1 text-md hover:bg-black/70"
+                        className="rounded-full bg-black/50 text-white px-3 py-1 text-sm hover:bg-black/70"
                         aria-label="Next media"
                       >
                         {t.projectDetail.next}
@@ -192,7 +192,7 @@ export default function ProjectDetail() {
                 </div>
 
                 {mediaItems.length > 1 ? (
-                  <div className="flex gap-2 p-3 overflow-x-auto bg-[rgba(246,246,246,0.55)]">
+                  <div className="flex gap-1 p-2 overflow-x-auto bg-[rgba(246,246,246,0.55)]">
                     {mediaItems.map((item, index) => (
                       <button
                         key={`${item.type}-${item.src}`}
@@ -201,7 +201,7 @@ export default function ProjectDetail() {
                           setIsLightboxOpen(false);
                           setIsLightboxZoomed(false);
                         }}
-                        className={`relative h-16 w-24 overflow-hidden rounded-lg border ${
+                        className={`relative h-14 w-20 overflow-hidden rounded-lg border ${
                           index === mediaIndex
                             ? "border-[var(--text)]"
                             : "border-[var(--border)]"
@@ -209,7 +209,7 @@ export default function ProjectDetail() {
                         aria-label={`Select media ${index + 1}`}
                       >
                         {item.type === "video" ? (
-                          <div className="h-full w-full flex items-center justify-center bg-black text-white text-xs">
+                          <div className="h-full w-full flex items-center justify-center bg-black text-white text-[10px]">
                             {t.projectDetail.demo}
                           </div>
                         ) : (
@@ -225,7 +225,7 @@ export default function ProjectDetail() {
                 ) : null}
               </div>
             ) : (
-              <div className="relative h-40 md:h-56 w-full">
+              <div className="relative h-36 md:h-48 w-full">
                 {project.heroImage ? (
                   <img
                     src={project.heroImage}
@@ -233,7 +233,7 @@ export default function ProjectDetail() {
                     className="h-full w-full object-cover"
                   />
                 ) : (
-                  <div className="h-full w-full flex items-center justify-center text-sm text-[var(--muted)]">
+                  <div className="h-full w-full flex items-center justify-center text-xs text-[var(--muted)]">
                     Add hero image in /public/projects
                   </div>
                 )}
@@ -241,8 +241,8 @@ export default function ProjectDetail() {
             )}
           </section>
 
-          <div className="space-y-2">
-            <div className="font-semibold text-2xl">
+          <div className="space-y-1.5">
+            <div className="font-semibold text-md">
               {t.projectDetail.techStack}
             </div>
             <div className="flex flex-wrap gap-2">
@@ -260,7 +260,7 @@ export default function ProjectDetail() {
                 setIsLightboxOpen(false);
                 setIsLightboxZoomed(false);
               }}
-              className="absolute top-4 right-4 rounded-full bg-black/60 text-white px-3 py-1 text-sm hover:bg-black/80"
+              className="absolute top-4 right-4 rounded-full bg-black/60 text-white px-3 py-1 text-xs hover:bg-black/80"
               aria-label="Close fullscreen"
             >
               {t.projectDetail.close}
@@ -278,12 +278,12 @@ export default function ProjectDetail() {
         ) : null}
 
         {/* Right side: content grid */}
-        <div className="flex flex-col gap-5">
-          <div className="rounded-2xl border border-[var(--border)] bg-[rgba(246,246,246,0.55)] p-5 shadow-sm">
-            <div className="font-semibold text-2xl">
+        <div className="flex flex-col gap-2.5 justify-center h-full">
+          <div className="rounded-2xl border border-[var(--border)] bg-[rgba(246,246,246,0.55)] p-2.5 shadow-sm">
+            <div className="font-semibold text-md">
               {t.projectDetail.overview}
             </div>
-            <div className="mt-3 text-xl text-[var(--text-muted)] space-y-2">
+            <div className="mt-1.5 text-sm text-[var(--text-muted)] space-y-0.5">
               <div>
                 <span className="font-semibold">{t.projectDetail.role}:</span>{" "}
                 {projectData.role}
@@ -295,11 +295,11 @@ export default function ProjectDetail() {
             </div>
 
             {projectData.notes?.length ? (
-              <div className="mt-3">
-                <div className="font-semibold text-xl">
+              <div className="mt-2">
+                <div className="font-semibold text-sm">
                   {t.projectDetail.note}
                 </div>
-                <ul className="mt-2 list-disc pl-5 text-xl text-[var(--text-muted)] space-y-1.5">
+                <ul className="mt-1 list-disc pl-5 text-sm text-[var(--text-muted)] space-y-0.5">
                   {projectData.notes.map((n: string) => (
                     <li key={n}>{n}</li>
                   ))}
@@ -308,33 +308,33 @@ export default function ProjectDetail() {
             ) : null}
           </div>
 
-          <div className="rounded-2xl border border-[var(--border)] bg-[rgba(246,246,246,0.55)] p-5 shadow-sm">
-            <div className="font-semibold text-2xl">
+          <div className="rounded-2xl border border-[var(--border)] bg-[rgba(246,246,246,0.55)] p-2.5 shadow-sm">
+            <div className="font-semibold text-md">
               {t.projectDetail.contributions}
             </div>
-            <ul className="mt-2 list-disc pl-5 text-xl text-[var(--text-muted)] space-y-1.5">
+            <ul className="mt-1 list-disc pl-5 text-sm text-[var(--text-muted)] space-y-0.5">
               {projectData.contributions.map((c: string) => (
                 <li key={c}>{c}</li>
               ))}
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-[var(--border)] bg-[rgba(246,246,246,0.55)] p-5 shadow-sm">
-            <div className="font-semibold text-2xl">
+          <div className="rounded-2xl border border-[var(--border)] bg-[rgba(246,246,246,0.55)] p-2.5 shadow-sm">
+            <div className="font-semibold text-md">
               {t.projectDetail.features}
             </div>
-            <ul className="mt-2 list-disc pl-5 text-xl text-[var(--text-muted)] space-y-1.5">
+            <ul className="mt-1 list-disc pl-5 text-sm text-[var(--text-muted)] space-y-0.5">
               {projectData.features.map((f: string) => (
                 <li key={f}>{f}</li>
               ))}
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-[var(--border)] bg-[rgba(246,246,246,0.55)] p-5 shadow-sm">
-            <div className="font-semibold text-2xl">
+          <div className="rounded-2xl border border-[var(--border)] bg-[rgba(246,246,246,0.55)] p-2.5 shadow-sm">
+            <div className="font-semibold text-md">
               {t.projectDetail.challenges}
             </div>
-            <ul className="mt-2 list-disc pl-5 text-xl text-[var(--text-muted)] space-y-1.5">
+            <ul className="mt-1 list-disc pl-5 text-sm text-[var(--text-muted)] space-y-0.5">
               {projectData.challenges.map((ch: string) => (
                 <li key={ch}>{ch}</li>
               ))}
@@ -349,7 +349,7 @@ export default function ProjectDetail() {
         className="absolute bottom-1/14 left-1/2 -translate-x-1/2 animate-bounce z-10 cursor-pointer hover:opacity-100 transition-opacity"
         aria-label="Scroll to next"
       >
-        <img src="/down.svg" alt="Scroll down" className="w-6 h-6 opacity-60" />
+        <img src="/down.svg" alt="Scroll down" className="w-5 h-5 opacity-60" />
       </button>
     </div>
   );

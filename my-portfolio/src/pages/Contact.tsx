@@ -30,7 +30,7 @@ export default function Contact() {
         <img
           src="/down.svg"
           alt="Scroll up"
-          className="w-6 h-6 opacity-60 rotate-180"
+          className="w-5 h-5 opacity-60 rotate-180"
         />
       </button>
 
@@ -42,13 +42,13 @@ export default function Contact() {
             : "opacity-0 translate-y-4"
         }`}
       >
-        <h1 className="text-6xl md:text-7xl font-semibold text-center mb-8 text-[var(--text)]">
+        <h1 className="text-4xl md:text-5xl font-semibold text-center mb-6 text-[var(--text)]">
           {t.contact.title}
         </h1>
 
         {/* Languages Section */}
-        <div className="flex flex-wrap gap-2 items-center justify-center mb-12">
-          <p className="text-3xl font-semibold text-[var(--text)]">
+        <div className="flex flex-wrap gap-2 items-center justify-center mb-8">
+          <p className="text-xl font-semibold text-[var(--text)]">
             {t.contact.workIn}
           </p>
           {t.contact.languages.map((lang) => (
@@ -56,20 +56,20 @@ export default function Contact() {
           ))}
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-2xl gap-8 mb-8">
+        <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-2xl gap-6 mb-6">
           {/* Email Section */}
-          <div className="flex items-center gap-4">
-            <img src="/email.svg" alt="Email" className="w-10 h-10" />
+          <div className="flex items-center gap-3">
+            <img src="/email.svg" alt="Email" className="w-8 h-8" />
             <a
               href="mailto:myatmade.may@gmail.com"
-              className="text-2xl md:text-3xl text-[var(--text-muted)] hover:underline transition"
+              className="text-lg md:text-xl text-[var(--text-muted)] hover:underline transition"
             >
               myatmade.may@gmail.com
             </a>
           </div>
 
           {/* Social Icons */}
-          <div className="flex gap-6">
+          <div className="flex gap-5">
             {socialLinks.map((link) => (
               <a
                 key={link.label}
@@ -83,10 +83,10 @@ export default function Contact() {
                   <img
                     src={link.svgIcon}
                     alt={link.label}
-                    className="w-10 h-10"
+                    className="w-8 h-8"
                   />
                 ) : (
-                  <span className="text-4xl">{link.icon}</span>
+                  <span className="text-2xl">{link.icon}</span>
                 )}
               </a>
             ))}
