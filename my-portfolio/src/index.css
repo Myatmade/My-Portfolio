@@ -70,6 +70,9 @@ html {
   color: var(--text);
   scrollbar-gutter: stable;
   overflow-y: hidden;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
