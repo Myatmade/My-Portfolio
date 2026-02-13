@@ -56,11 +56,6 @@ export default function ProjectDetail() {
         return;
       }
 
-      const perfEntries = window.performance.getEntriesByType("navigation");
-      const isRefresh =
-        perfEntries.length > 0 &&
-        (perfEntries[0] as PerformanceNavigationTiming).type === "reload";
-
       // Don't redirect on refresh - stay on the current project page
       // This allows refreshing to keep you on the same project detail page
     }
